@@ -1,16 +1,16 @@
-# pokedex
+# Pokédex
 
-A new Flutter project.
+[![GitHub issues](https://img.shields.io/github/issues/danieldcastro/pokedex)](https://github.com/danieldcastro/pokedex/issues)
+[![GitHub forks](https://img.shields.io/github/forks/danieldcastro/pokedex)](https://github.com/danieldcastro/pokedex/network)
+[![GitHub stars](https://img.shields.io/github/stars/danieldcastro/pokedex)](https://github.com/danieldcastro/pokedex/stargazers)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](#)
+<a href="https://www.buymeacoffee.com/danieldcastro" target="_blank">
+  <img width="135" src="https://img.shields.io/badge/Buy_Me_A_Toddynho-d83a7c?style=for-the-badge&logo=buy-me-a-coffee&logoColor=white">
+</a>
 
-## Getting Started
+> Status do Projeto: Em andamento :hourglass_flowing_sand:
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+----
+#### Se você gostou deste repositório, por favor apoie dando uma :star: 
+#### Feito com ♥ e <img height="26" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/flutter/flutter.png">lutter!
