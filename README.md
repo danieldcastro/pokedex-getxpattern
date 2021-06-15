@@ -1,5 +1,6 @@
 # Pokédex
 
+
 [![GitHub issues](https://img.shields.io/github/issues/danieldcastro/pokedex)](https://github.com/danieldcastro/pokedex/issues)
 [![GitHub forks](https://img.shields.io/github/forks/danieldcastro/pokedex)](https://github.com/danieldcastro/pokedex/network)
 [![GitHub stars](https://img.shields.io/github/stars/danieldcastro/pokedex)](https://github.com/danieldcastro/pokedex/stargazers)
@@ -10,6 +11,14 @@
 </a>
 
 > Status do Projeto: Em andamento :hourglass_flowing_sand:
+
+## Descrição do projeto :pencil:
+
+App desenvolvido para listagem e detalhamento dos principais Pokémon.
+
+Com o consumo de uma **API REST**, através do **GET CONNECT** e **STATE MIXIN**, é possível exibir uma lista de Pokémon e seus detalhes.
+
+O app foi implementado utilizando o pacote **GETx** e a arquitetura **GETX PATTERN**.
 
 ----
 #### Se você gostou deste repositório, por favor apoie dando uma :star: 
