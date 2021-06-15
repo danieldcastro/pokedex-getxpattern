@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
@@ -11,7 +12,7 @@ void main() {
     title: 'Pokedex',
     debugShowCheckedModeBanner: false,
     getPages: AppPages.routes,
-    // initialRoute: Routes.HOME,
+    initialRoute: Routes.HOME,
     theme: appThemeData,
     localizationsDelegates: [GlobalMaterialLocalizations.delegate],
     supportedLocales: [
