@@ -1,27 +1,31 @@
-class PokeAPI {
-  List<Pokemon> pokemon;
+import 'dart:convert';
 
-  PokeAPI({this.pokemon});
+// To parse this JSON data, do
+//
+//     final pokeApi = pokeApiFromJson(jsonString);
 
-  PokeAPI.fromJson(Map<String, dynamic> json) {
-    if (json['pokemon'] != null) {
-      pokemon = <Pokemon>[];
-      json['pokemon'].forEach((v) {
-        pokemon.add(new Pokemon.fromJson(v));
-      });
-    }
-  }
+List<PokeApi> pokeApiFromJson(str) =>
+    List<PokeApi>.from(str.map((x) => PokeApi.fromJson(x)).toList());
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.pokemon != null) {
-      data['pokemon'] = this.pokemon.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
-}
+String pokeApiToJson(List<PokeApi> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class Pokemon {
+class PokeApi {
+  PokeApi({
+    this.id,
+    this.num,
+    this.name,
+    this.img,
+    this.type,
+    this.height,
+    this.weight,
+    this.candy,
+    this.egg,
+    this.weaknesses,
+    this.prevEvolution,
+    this.nextEvolution,
+  });
+
   int id;
   String num;
   String name;
@@ -31,103 +35,73 @@ class Pokemon {
   String weight;
   String candy;
   String egg;
-  List<NextEvolution> nextEvolution;
-  List<PrevEvolution> prevEvolution;
+  List<String> weaknesses;
+  List<Evolution> prevEvolution;
+  List<Evolution> nextEvolution;
 
-  Pokemon(
-      {this.id,
-      this.num,
-      this.name,
-      this.img,
-      this.type,
-      this.height,
-      this.weight,
-      this.candy,
-      this.egg,
-      this.nextEvolution,
-      this.prevEvolution});
+  factory PokeApi.fromJson(Map<String, dynamic> json) => PokeApi(
+        id: json["id"] == null ? null : json["id"],
+        num: json["num"] == null ? null : json["num"],
+        name: json["name"] == null ? null : json["name"],
+        img: json["img"] == null ? null : json["img"],
+        type: json["type"] == null
+            ? null
+            : List<String>.from(json["type"].map((x) => x)),
+        height: json["height"] == null ? null : json["height"],
+        weight: json["weight"] == null ? null : json["weight"],
+        candy: json["candy"] == null ? null : json["candy"],
+        egg: json["egg"] == null ? null : json["egg"],
+        weaknesses: json["weaknesses"] == null
+            ? null
+            : List<String>.from(json["weaknesses"].map((x) => x)),
+        prevEvolution: json["prev_evolution"] == null
+            ? null
+            : List<Evolution>.from(
+                json["prev_evolution"].map((x) => Evolution.fromJson(x))),
+        nextEvolution: json["next_evolution"] == null
+            ? null
+            : List<Evolution>.from(
+                json["next_evolution"].map((x) => Evolution.fromJson(x))),
+      );
 
-  Pokemon.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    num = json['num'];
-    name = json['name'];
-    img = json['img'];
-    type = json['type'].cast<String>();
-    height = json['height'];
-    weight = json['weight'];
-    candy = json['candy'];
-    egg = json['egg'];
-    if (json['next_evolution'] != null) {
-      nextEvolution = <NextEvolution>[];
-      json['next_evolution'].forEach((v) {
-        nextEvolution.add(new NextEvolution.fromJson(v));
-      });
-    }
-    if (json['prev_evolution'] != null) {
-      prevEvolution = <PrevEvolution>[];
-      json['prev_evolution'].forEach((v) {
-        prevEvolution.add(new PrevEvolution.fromJson(v));
-      });
-    }
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['num'] = this.num;
-    data['name'] = this.name;
-    data['img'] = this.img;
-    data['type'] = this.type;
-    data['height'] = this.height;
-    data['weight'] = this.weight;
-    data['candy'] = this.candy;
-    data['egg'] = this.egg;
-    if (this.nextEvolution != null) {
-      data['next_evolution'] =
-          this.nextEvolution.map((v) => v.toJson()).toList();
-    }
-    if (this.prevEvolution != null) {
-      data['prev_evolution'] =
-          this.prevEvolution.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+        "id": id == null ? null : id,
+        "num": num == null ? null : num,
+        "name": name == null ? null : name,
+        "img": img == null ? null : img,
+        "type": type == null ? null : List<dynamic>.from(type.map((x) => x)),
+        "height": height == null ? null : height,
+        "weight": weight == null ? null : weight,
+        "candy": candy == null ? null : candy,
+        "egg": egg == null ? null : egg,
+        "weaknesses": weaknesses == null
+            ? null
+            : List<dynamic>.from(weaknesses.map((x) => x)),
+        "prev_evolution": prevEvolution == null
+            ? null
+            : List<dynamic>.from(prevEvolution.map((x) => x.toJson())),
+        "next_evolution": nextEvolution == null
+            ? null
+            : List<dynamic>.from(nextEvolution.map((x) => x.toJson())),
+      };
 }
 
-class NextEvolution {
+class Evolution {
+  Evolution({
+    this.num,
+    this.name,
+  });
+
   String num;
   String name;
 
-  NextEvolution({this.num, this.name});
+  factory Evolution.fromJson(Map<String, dynamic> json) => Evolution(
+        num: json["num"],
+        name: json["name"],
+      );
 
-  NextEvolution.fromJson(Map<String, dynamic> json) {
-    num = json['num'];
-    name = json['name'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['num'] = this.num;
-    data['name'] = this.name;
-    return data;
-  }
-}
-
-class PrevEvolution {
-  String num;
-  String name;
-
-  PrevEvolution({this.num, this.name});
-
-  PrevEvolution.fromJson(Map<String, dynamic> json) {
-    num = json['num'];
-    name = json['name'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['num'] = this.num;
-    data['name'] = this.name;
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+        "num": num,
+        "name": name,
+      };
 }

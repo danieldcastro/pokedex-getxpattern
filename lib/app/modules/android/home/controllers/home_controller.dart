@@ -18,6 +18,7 @@ class HomeController extends GetxController with StateMixin {
 
     try {
       final data = await _pokeApiRepository.getAll();
+      
       change(data, status: RxStatus.success());
     } catch (e) {
       print(e);

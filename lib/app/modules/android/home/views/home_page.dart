@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
-import '../../../../data/model/poke_api.dart';
 import '../../../../global/consts/consts_app.dart';
-
 import '../controllers/home_controller.dart';
 import 'widgets/appBar_home.dart';
+import 'widgets/grid_poke_home.dart';
 
 class HomePage extends GetView<HomeController> {
   @override
@@ -41,16 +40,7 @@ class HomePage extends GetView<HomeController> {
                 Expanded(
                   child: Container(
                     child: controller.obx((state) {
-                      return ListView.builder(
-                        itemCount: state.lenght,
-                        itemBuilder: (context, index) {
-                          final PokeAPI poke = state[index];
-                          return ListTile(
-                            title: Text(poke.pokemon[index].name),
-                            subtitle: Text(poke.pokemon[index].height),
-                          );
-                        },
-                      );
+                      return GridPokeHome(state: state);
                     }, onError: (error) {
                       return SizedBox(
                         width: double.infinity,
