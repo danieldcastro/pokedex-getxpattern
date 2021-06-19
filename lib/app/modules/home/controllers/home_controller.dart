@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../../../data/repository/poke_api_repository.dart';
+import '../../../data/repository/poke_api_repository.dart';
 
 class HomeController extends GetxController with StateMixin {
   final PokeApiRepository _pokeApiRepository;
@@ -24,24 +24,5 @@ class HomeController extends GetxController with StateMixin {
       print(e);
       change([], status: RxStatus.error('Erro ao buscar Pokémon'));
     }
-  }
-
-  cardTap() {
-    // Get.toNamed(''); //DatailsPage
-  }
-
-  String parseId(int id) {
-    String newId;
-    switch (id.toString().length) {
-      case 1:
-        newId = '00$id';
-        break;
-      case 2:
-        newId = '0$id';
-        break;
-      case 3:
-        newId = '$id';
-    }
-    return newId;
   }
 }

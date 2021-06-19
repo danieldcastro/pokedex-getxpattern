@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../global/widgets/global_padding.dart';
+import '../../../../global/widgets/global_padding.dart';
 
 class AppBarHome extends StatelessWidget {
   final Function menuTap;

@@ -1,13 +1,11 @@
-import 'package:flutter/material.dart';
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
 
-import '../../../../../global/consts/consts_app.dart';
+import '../../../../global/consts/consts_app.dart';
 
 class PokeCard extends StatelessWidget {
   final String name;
-  final int index;
   final String id;
   final Color color;
   final String image;
@@ -16,7 +14,6 @@ class PokeCard extends StatelessWidget {
   const PokeCard(
       {Key key,
       @required this.name,
-      this.index,
       this.color,
       @required this.image,
       @required this.id,
@@ -28,7 +25,7 @@ class PokeCard extends StatelessWidget {
     return LayoutBuilder(builder: (context, cons) {
       return Card(
           clipBehavior: Clip.antiAliasWithSaveLayer,
-          color: color ?? Colors.green,
+          color: color,
           elevation: 0,
           margin: EdgeInsets.all(8),
           shape: RoundedRectangleBorder(
@@ -118,7 +115,7 @@ class PokeCard extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 5, vertical: 1),
           child: Text(
             type[i],
-            style: TextStyle(color: Colors.white, fontSize: 16),
+            style: TextStyle(color: Colors.white, fontSize: 14),
           ),
           decoration: BoxDecoration(
               color: Color.fromARGB(100, 255, 255, 255),

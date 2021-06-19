@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../global/consts/consts_app.dart';
-import '../controllers/home_controller.dart';
-import 'widgets/appBar_home.dart';
-import 'widgets/grid_poke_home.dart';
+import '../../../home/controllers/home_controller.dart';
+import '../../../home/views/widgets/appBar_home.dart';
+import '../../../home/views/widgets/grid_poke_home.dart';
 
 class HomePage extends GetView<HomeController> {
   @override
@@ -42,8 +42,6 @@ class HomePage extends GetView<HomeController> {
                     child: controller.obx((state) {
                       return GridPokeHome(
                         state: state,
-                        cardTap: controller.cardTap(),
-                        controller: controller,
                       );
                     }, onError: (error) {
                       return SizedBox(
@@ -63,7 +61,12 @@ class HomePage extends GetView<HomeController> {
                           ],
                         ),
                       );
-                    }),
+                    },
+                        onLoading: Center(
+                          child: CircularProgressIndicator(
+                            color: Get.context.theme.primaryColor,
+                          ),
+                        )),
                   ),
                 ),
               ],
