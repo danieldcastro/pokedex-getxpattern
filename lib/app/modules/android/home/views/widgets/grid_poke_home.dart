@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:get/get.dart';
-import 'package:pokedex/app/modules/android/home/controllers/home_controller.dart';
-import 'package:pokedex/app/modules/android/home/views/widgets/poke_card.dart';
 
 import '../../../../../data/model/poke_api.dart';
+import '../../controllers/home_controller.dart';
+import 'poke_card.dart';
 
 class GridPokeHome extends StatelessWidget {
   final List<PokeApi> state;
   final Function cardTap;
   final HomeController controller;
 
-  const GridPokeHome({Key key, @required this.state, @required this.cardTap, @required this.controller})
+  const GridPokeHome(
+      {Key key,
+      @required this.state,
+      @required this.cardTap,
+      @required this.controller})
       : super(key: key);
 
   @override

@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
-import 'package:pokedex/app/global/consts/consts_app.dart';
+
+import '../../../../../global/consts/consts_app.dart';
 
 class PokeCard extends StatelessWidget {
   final String name;
@@ -96,7 +98,7 @@ class PokeCard extends StatelessWidget {
                       ],
                     ),
                     Column(
-                     crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: chipTypes(),
                     )
                   ],
