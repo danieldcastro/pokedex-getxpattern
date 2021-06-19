@@ -18,11 +18,30 @@ class HomeController extends GetxController with StateMixin {
 
     try {
       final data = await _pokeApiRepository.getAll();
-      
+
       change(data, status: RxStatus.success());
     } catch (e) {
       print(e);
       change([], status: RxStatus.error('Erro ao buscar Pokémon'));
     }
+  }
+
+  cardTap() {
+    // Get.toNamed(''); //DatailsPage
+  }
+
+  String parseId(int id) {
+    String newId;
+    switch (id.toString().length) {
+      case 1:
+        newId = '00$id';
+        break;
+      case 2:
+        newId = '0$id';
+        break;
+      case 3:
+        newId = '$id';
+    }
+    return newId;
   }
 }

@@ -22,7 +22,7 @@ class PokeApiProvider extends GetConnect {
   Future<List<PokeApi>> getAll() async {
     List<PokeApi> pokemon = <PokeApi>[];
     final response =
-        await get<List<PokeApi>>(ConstsApi.pokeapiURL, decoder: (body) {
+        await get<List<PokeApi>>(ConstsApi.POKE_API_URL, decoder: (body) {
       pokemon = pokeApiFromJson(body);
       return pokemon;
     });

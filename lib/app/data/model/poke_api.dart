@@ -5,7 +5,7 @@ import 'dart:convert';
 //     final pokeApi = pokeApiFromJson(jsonString);
 
 List<PokeApi> pokeApiFromJson(str) =>
-    List<PokeApi>.from(str.map((x) => PokeApi.fromJson(x)).toList());
+    List<PokeApi>.from(str.map((x) => PokeApi.fromJson(x)));
 
 String pokeApiToJson(List<PokeApi> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));

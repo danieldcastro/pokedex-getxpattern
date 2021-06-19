@@ -45,7 +45,8 @@ class AppBarHome extends StatelessWidget {
                 ),
               ),
             ],
-          )
+          ),
+          SizedBox()
         ],
       ),
       height: 140,

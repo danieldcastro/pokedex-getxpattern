@@ -25,7 +25,9 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  auto_size_text: ^2.1.0
   cached_network_image: ^3.0.0
+  flutter_staggered_animations: ^1.0.0
   get: ^4.1.4
 
 dev_dependencies:
@@ -43,8 +45,8 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
-      - assets/images/pokeball.png
-      - assets/images/pokeball_dark.png
+    - assets/images/pokeball.png
+    - assets/images/pokeball_dark.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
   # For details regarding adding assets from package dependencies, see

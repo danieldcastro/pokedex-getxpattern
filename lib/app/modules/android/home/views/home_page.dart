@@ -40,7 +40,11 @@ class HomePage extends GetView<HomeController> {
                 Expanded(
                   child: Container(
                     child: controller.obx((state) {
-                      return GridPokeHome(state: state);
+                      return GridPokeHome(
+                        state: state,
+                        cardTap: controller.cardTap(),
+                        controller: controller,
+                      );
                     }, onError: (error) {
                       return SizedBox(
                         width: double.infinity,
@@ -50,7 +54,11 @@ class HomePage extends GetView<HomeController> {
                             Text(error),
                             TextButton(
                               onPressed: () => controller.getAllPoke(),
-                              child: Text('Tentar novamente'),
+                              child: Text(
+                                'Tentar novamente',
+                                style: TextStyle(
+                                    color: Get.context.theme.primaryColor),
+                              ),
                             )
                           ],
                         ),
