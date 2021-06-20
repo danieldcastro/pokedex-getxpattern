@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 
-import '../../../../routes/app_routes.dart';
-
 import '../../../../data/model/poke_api.dart';
 import '../../../../global/consts/consts_app.dart';
+import '../../../../routes/app_routes.dart';
 import 'poke_card.dart';
 
 class GridPokeHome extends StatelessWidget {
@@ -29,16 +27,21 @@ class GridPokeHome extends StatelessWidget {
         itemCount: state.length,
         itemBuilder: (context, index) {
           final PokeApi poke = state[index];
+          List arg = [state, poke];
           return AnimationConfiguration.staggeredGrid(
               position: index,
               columnCount: 2,
               duration: Duration(milliseconds: 375),
               child: ScaleAnimation(
                 child: GestureDetector(
-                  onTap: () => Get.toNamed(Routes.POKE_DETAIL, arguments: poke),
+                  onTap: () => Get.toNamed(
+                    Routes.POKE_DETAIL,
+                    arguments: arg,
+                  ),
                   child: PokeCard(
                     id: ConstsApp.parseId(poke.id),
-                    image: poke.img,
+                    image:
+                        '${ConstsApp.IMG_URL}${ConstsApp.parseId(poke.id)}.png',
                     name: poke.name,
                     type: poke.type,
                     color: ConstsApp.getColorType(type: poke.type[0]),

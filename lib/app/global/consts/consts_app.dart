@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ConstsApp {
-  static const whitePoke = 'assets/images/pokeball.png';
-  static const blackPoke = 'assets/images/pokeball_dark.png';
+  static const WHITE_POKE = 'assets/images/pokeball.png';
+  static const BLACK_POKE = 'assets/images/pokeball_dark.png';
+
+  static const IMG_URL =
+      'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/';
 
   static Color getColorType({@required String type}) {
     switch (type) {
@@ -16,7 +19,7 @@ class ConstsApp {
         return Color.fromARGB(255, 88, 144, 214);
         break;
       case 'Planta':
-        return Color.fromARGB(255, 44, 218, 177);
+        return Color.fromARGB(255, 72, 208, 176);
         break;
       case 'Elétrico':
         return Color.fromARGB(255, 244, 210, 60);

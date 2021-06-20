@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
 
 import '../../../../global/consts/consts_app.dart';
 
@@ -36,13 +37,16 @@ class PokeCard extends StatelessWidget {
               Positioned(
                 bottom: -15,
                 right: -15,
-                child: Opacity(
-                  opacity: 0.3,
-                  child: Image.asset(
-                    ConstsApp.blackPoke,
-                    color: Colors.white,
-                    height: 95,
-                    width: 95,
+                child: Hero(
+                  tag: id,
+                  child: Opacity(
+                    opacity: 0.3,
+                    child: Image.asset(
+                      ConstsApp.BLACK_POKE,
+                      color: Colors.white,
+                      height: 95,
+                      width: 95,
+                    ),
                   ),
                 ),
               ),
@@ -50,6 +54,9 @@ class PokeCard extends StatelessWidget {
                 bottom: 5,
                 right: 5,
                 child: CachedNetworkImage(
+                  errorWidget: (context, url, error) => Container(
+                    color: Colors.transparent,
+                  ),
                   placeholder: (context, url) => new Container(
                     color: Colors.transparent,
                   ),

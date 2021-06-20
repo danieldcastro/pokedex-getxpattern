@@ -21,11 +21,11 @@ class HomePage extends GetView<HomeController> {
             left: Get.width - (240 / 1.6),
             child: Opacity(
               child: Image.asset(
-                ConstsApp.blackPoke,
+                ConstsApp.BLACK_POKE,
                 height: 240,
                 width: 240,
               ),
-              opacity: 0.1,
+              opacity: 0.05,
             ),
           ),
           Container(
