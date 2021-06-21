@@ -22,7 +22,7 @@ class HomeController extends GetxController with StateMixin {
       change(data, status: RxStatus.success());
     } catch (e) {
       print(e);
-      change([], status: RxStatus.error('Erro ao buscar Pokémon'));
+      change([], status: RxStatus.error('Deu Ruim'));
     }
   }
 }

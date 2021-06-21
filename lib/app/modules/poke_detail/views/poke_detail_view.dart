@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:get/get.dart';
-import 'package:simple_animations/simple_animations/controlled_animation.dart';
+
+import 'widgets/page_view_poke.dart';
 
 import '../../../global/consts/consts_app.dart';
-import 'widgets/information_sheet.dart';
-
 import '../controllers/poke_detail_controller.dart';
+import 'widgets/information_sheet.dart';
 
 class PokeDetailView extends GetView<PokeDetailController> {
   @override
@@ -24,15 +22,15 @@ class PokeDetailView extends GetView<PokeDetailController> {
           child: Scaffold(
               appBar: AppBar(
                 elevation: 0,
-                title: Opacity(
-                    opacity: 0,
-                    child: Obx(() => Text(
-                          controller.currentPoke(controller.current.value).name,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 21,
-                          ),
-                        ))),
+                // title: Opacity(
+                //     opacity: controller.opacityTitleAppBar.value,
+                //     child: Obx(() => Text(
+                //           controller.currentPoke(controller.current.value).name,
+                //           style: TextStyle(
+                //             fontWeight: FontWeight.bold,
+                //             fontSize: 21,
+                //           ),
+                //         ))),
                 leading: IconButton(
                   icon: Icon(Icons.arrow_back_rounded),
                   onPressed: () => Get.back(),
@@ -48,86 +46,99 @@ class PokeDetailView extends GetView<PokeDetailController> {
               ),
               body: Stack(
                 children: [
-                  Container(
-                    height: Get.height / 3,
+                  Positioned(
+                    top: Get.height / 100,
+                    left: 20,
+                    child: Text(
+                      controller.currentPoke(controller.current.value).name,
+                      style: TextStyle(
+                          fontFamily: 'Google',
+                          fontSize: 38 -
+                              controller.progress.value * (Get.height * 0.011),
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
                   ),
-                  InformationSheet(),
-                  Padding(
-                    padding: EdgeInsets.only(top: Get.height / 8),
+                  Positioned(
+                    top: Get.height / 25 -
+                        controller.progress.value * (Get.height * 0.015),
                     child: SizedBox(
-                        height: 230,
-                        child: Obx(() => CarouselSlider.builder(
-                              options: CarouselOptions(
-                                viewportFraction: 0.49,
-                                onPageChanged: (index, reason) =>
-                                    controller.changePage(index),
-                                initialPage: controller.current.value,
-                                scrollPhysics: BouncingScrollPhysics(),
-                                enableInfiniteScroll: false,
-                                enlargeCenterPage: true,
-                              ),
-                              itemCount: controller.allPoke.length,
-                              itemBuilder: (context, index, pageViewIndex) {
-                                return Stack(
-                                  alignment: Alignment.center,
-                                  children: [
-                                    ControlledAnimation(
-                                      playback: Playback.LOOP,
-                                      duration:
-                                          controller.rotationPoke().duration,
-                                      tween: controller.rotationPoke(),
-                                      builder: (buildContext, animatedValue) =>
-                                          Transform.rotate(
-                                        angle: animatedValue['rotation'],
-                                        child: Hero(
-                                          tag: index.toString(),
-                                          child: AnimatedOpacity(
-                                            duration:
-                                                Duration(milliseconds: 300),
-                                            curve: Curves.easeInOut,
-                                            opacity: index ==
-                                                    controller.current.value
-                                                ? 0.3
-                                                : 0,
-                                            child: Image.asset(
-                                              ConstsApp.BLACK_POKE,
-                                              color: Colors.white,
-                                              height: 270,
-                                              width: 270,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    AnimatedPadding(
-                                      duration: Duration(milliseconds: 300),
-                                      curve: Curves.easeInOut,
-                                      padding: EdgeInsets.all(
-                                          index == controller.current.value
-                                              ? 0
-                                              : 50),
-                                      child: CachedNetworkImage(
-                                        color: index == controller.current.value
-                                            ? null
-                                            : Colors.black.withOpacity(0.3),
-                                        height: 180,
-                                        width: 180,
-                                        errorWidget: (context, url, error) =>
-                                            Container(
-                                                color: Colors.transparent),
-                                        imageUrl: controller.getImage(index),
-                                        placeholder: (context, url) =>
-                                            Container(
-                                                color: Colors.transparent),
-                                      ),
-                                    ),
-                                  ],
-                                );
-                              },
-                            ))),
+                      width: Get.width,
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.only(left: 20, right: 20, top: 20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            setTypes(controller
+                                .currentPoke(controller.current.value)
+                                .type),
+                            Text(
+                              '#${ConstsApp.parseId(controller.currentPoke(controller.current.value).id)}',
+                              style: TextStyle(
+                                  fontFamily: 'Google',
+                                  fontSize: 26 -
+                                      controller.progress.value *
+                                          (Get.height * 0.008),
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  InformationSheet(
+                    controller: controller,
+                  ),
+                  Opacity(
+                    opacity: controller.opacity.value,
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                          top: (Get.height / 8) -
+                              controller.progress.value * 50),
+                      child: SizedBox(
+                          height: 230,
+                          child: PageViewPoke(
+                            controller: controller,
+                          )),
+                    ),
                   ),
                 ],
               )),
         ));
+  }
+
+  Widget setTypes(List<String> types) {
+    List<Widget> lista = [];
+    types.forEach((nome) {
+      lista.add(
+        Row(
+          children: <Widget>[
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+              child: Text(
+                nome.trim(),
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize:
+                        18 - controller.progress.value * (Get.height * 0.005),
+                    fontFamily: 'Google'),
+              ),
+              decoration: BoxDecoration(
+                  color: Color.fromARGB(100, 255, 255, 255),
+                  borderRadius: BorderRadius.circular(50)),
+            ),
+            SizedBox(
+              width: 8,
+            )
+          ],
+        ),
+      );
+    });
+    return Row(
+      children: lista,
+      crossAxisAlignment: CrossAxisAlignment.start,
+    );
   }
 }

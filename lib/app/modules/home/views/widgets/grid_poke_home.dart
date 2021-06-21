@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 
@@ -9,10 +10,12 @@ import 'poke_card.dart';
 
 class GridPokeHome extends StatelessWidget {
   final List<PokeApi> state;
+  final Widget card;
 
   const GridPokeHome({
     Key key,
     @required this.state,
+    this.card,
   }) : super(key: key);
 
   @override
@@ -39,13 +42,13 @@ class GridPokeHome extends StatelessWidget {
                     arguments: arg,
                   ),
                   child: PokeCard(
-                    id: ConstsApp.parseId(poke.id),
-                    image:
-                        '${ConstsApp.IMG_URL}${ConstsApp.parseId(poke.id)}.png',
-                    name: poke.name,
-                    type: poke.type,
-                    color: ConstsApp.getColorType(type: poke.type[0]),
-                  ),
+                      id: ConstsApp.parseId(poke.id),
+                      image:
+                          '${ConstsApp.IMG_URL}${ConstsApp.parseId(poke.id)}.png',
+                      name: poke.name,
+                      type: poke.type,
+                      color: ConstsApp.getColorType(type: poke.type[0]),
+                      index: index),
                 ),
               ));
         },

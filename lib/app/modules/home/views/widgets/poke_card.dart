@@ -11,6 +11,7 @@ class PokeCard extends StatelessWidget {
   final Color color;
   final String image;
   final List type;
+  final int index;
 
   const PokeCard(
       {Key key,
@@ -18,7 +19,8 @@ class PokeCard extends StatelessWidget {
       this.color,
       @required this.image,
       @required this.id,
-      @required this.type})
+      @required this.type,
+      this.index})
       : super(key: key);
 
   @override
@@ -37,31 +39,31 @@ class PokeCard extends StatelessWidget {
               Positioned(
                 bottom: -15,
                 right: -15,
-                child: Hero(
-                  tag: id,
-                  child: Opacity(
-                    opacity: 0.3,
-                    child: Image.asset(
-                      ConstsApp.BLACK_POKE,
-                      color: Colors.white,
-                      height: 95,
-                      width: 95,
-                    ),
+                child: Opacity(
+                  opacity: 0.3,
+                  child: Image.asset(
+                    ConstsApp.BLACK_POKE,
+                    color: Colors.white,
+                    height: 95,
+                    width: 95,
                   ),
                 ),
               ),
               Positioned(
                 bottom: 5,
                 right: 5,
-                child: CachedNetworkImage(
-                  errorWidget: (context, url, error) => Container(
-                    color: Colors.transparent,
+                child: Hero(
+                  tag: id,
+                  child: CachedNetworkImage(
+                    errorWidget: (context, url, error) => Container(
+                      color: Colors.transparent,
+                    ),
+                    placeholder: (context, url) => new Container(
+                      color: Colors.transparent,
+                    ),
+                    imageUrl: image,
+                    height: 80,
                   ),
-                  placeholder: (context, url) => new Container(
-                    color: Colors.transparent,
-                  ),
-                  imageUrl: image,
-                  height: 80,
                 ),
               ),
               Padding(
@@ -122,7 +124,8 @@ class PokeCard extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 5, vertical: 1),
           child: Text(
             type[i],
-            style: TextStyle(color: Colors.white, fontSize: 14),
+            style: TextStyle(
+                color: Colors.white, fontSize: 14, fontFamily: 'Google'),
           ),
           decoration: BoxDecoration(
               color: Color.fromARGB(100, 255, 255, 255),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
@@ -13,6 +14,12 @@ void main() {
     getPages: AppPages.routes,
     initialRoute: Routes.HOME,
     theme: appThemeData,
+    onInit: () {
+      SystemChrome.setPreferredOrientations([
+        DeviceOrientation.portraitUp,
+        DeviceOrientation.portraitDown,
+      ]);
+    },
     localizationsDelegates: [GlobalMaterialLocalizations.delegate],
     supportedLocales: [
       const Locale('pt', 'BR'),

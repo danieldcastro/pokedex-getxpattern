@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 
 import '../../../global/consts/consts_app.dart';
 import '../controllers/home_controller.dart';
 import 'widgets/appBar_home.dart';
 import 'widgets/grid_poke_home.dart';
+import 'widgets/shimmer_grid_home.dart';
 
 class HomePage extends GetView<HomeController> {
   @override
@@ -39,34 +39,33 @@ class HomePage extends GetView<HomeController> {
                 ),
                 Expanded(
                   child: Container(
-                    child: controller.obx((state) {
-                      return GridPokeHome(
-                        state: state,
-                      );
-                    }, onError: (error) {
-                      return SizedBox(
-                        width: double.infinity,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(error),
-                            TextButton(
-                              onPressed: () => controller.getAllPoke(),
-                              child: Text(
-                                'Tentar novamente',
-                                style: TextStyle(
-                                    color: Get.context.theme.primaryColor),
-                              ),
-                            )
-                          ],
-                        ),
-                      );
-                    },
-                        onLoading: Center(
-                          child: CircularProgressIndicator(
-                            color: Get.context.theme.primaryColor,
+                    child: controller.obx(
+                      (state) {
+                        return GridPokeHome(
+                          state: state,
+                        );
+                      },
+                      onLoading: ShimmerGridHome(),
+                      onError: (error) {
+                        return SizedBox(
+                          width: double.infinity,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(error),
+                              TextButton(
+                                onPressed: () => controller.getAllPoke(),
+                                child: Text(
+                                  'Bora tentar mais uma vez',
+                                  style: TextStyle(
+                                      color: Get.context.theme.primaryColor),
+                                ),
+                              )
+                            ],
                           ),
-                        )),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ],
