@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -22,15 +23,6 @@ class PokeDetailView extends GetView<PokeDetailController> {
           child: Scaffold(
               appBar: AppBar(
                 elevation: 0,
-                // title: Opacity(
-                //     opacity: controller.opacityTitleAppBar.value,
-                //     child: Obx(() => Text(
-                //           controller.currentPoke(controller.current.value).name,
-                //           style: TextStyle(
-                //             fontWeight: FontWeight.bold,
-                //             fontSize: 21,
-                //           ),
-                //         ))),
                 leading: IconButton(
                   icon: Icon(Icons.arrow_back_rounded),
                   onPressed: () => Get.back(),
@@ -48,15 +40,43 @@ class PokeDetailView extends GetView<PokeDetailController> {
                 children: [
                   Positioned(
                     top: Get.height / 100,
-                    left: 20,
-                    child: Text(
-                      controller.currentPoke(controller.current.value).name,
-                      style: TextStyle(
-                          fontFamily: 'Google',
-                          fontSize: 38 -
-                              controller.progress.value * (Get.height * 0.011),
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
+                    child: SizedBox(
+                      width: Get.width,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 25),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox(
+                              width: Get.width * 0.7,
+                              child: AutoSizeText(
+                                controller
+                                    .currentPoke(controller.current.value)
+                                    .name,
+                                maxLines: 1,
+                                style: TextStyle(
+                                    fontFamily: 'Google',
+                                    fontSize: 40 -
+                                        controller.progress.value *
+                                            (Get.height * 0.011),
+                                    fontWeight: FontWeight.w800,
+                                    color: Colors.white),
+                              ),
+                            ),
+                            Text(
+                              '#${ConstsApp.parseId(controller.currentPoke(controller.current.value).id)}',
+                              style: TextStyle(
+                                  fontFamily: 'Google',
+                                  fontSize: 22 -
+                                      controller.progress.value *
+                                          (Get.height * 0.008),
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                   Positioned(
@@ -66,21 +86,22 @@ class PokeDetailView extends GetView<PokeDetailController> {
                       width: Get.width,
                       child: Padding(
                         padding:
-                            const EdgeInsets.only(left: 20, right: 20, top: 20),
+                            const EdgeInsets.only(left: 25, right: 25, top: 20),
                         child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             setTypes(controller
                                 .currentPoke(controller.current.value)
                                 .type),
                             Text(
-                              '#${ConstsApp.parseId(controller.currentPoke(controller.current.value).id)}',
+                              controller.getPokePhase(),
                               style: TextStyle(
                                   fontFamily: 'Google',
-                                  fontSize: 26 -
+                                  fontSize: 18 -
                                       controller.progress.value *
-                                          (Get.height * 0.008),
-                                  fontWeight: FontWeight.bold,
+                                          (Get.height * 0.005),
+                                  fontWeight: FontWeight.normal,
                                   color: Colors.white),
                             ),
                           ],
@@ -95,8 +116,10 @@ class PokeDetailView extends GetView<PokeDetailController> {
                     opacity: controller.opacity.value,
                     child: Padding(
                       padding: EdgeInsets.only(
-                          top: (Get.height / 8) -
-                              controller.progress.value * 50),
+                          top: controller.opacityTitleAppBar.value == 1
+                              ? 1000
+                              : (Get.height / 8) -
+                                  controller.progress.value * 50),
                       child: SizedBox(
                           height: 230,
                           child: PageViewPoke(

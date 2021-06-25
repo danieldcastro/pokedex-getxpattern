@@ -14,7 +14,7 @@ class PokeDetailController extends GetxController {
   List<PokeApi> allPoke;
   RxDouble progress = 0.0.obs;
   RxDouble opacity = 1.0.obs;
-  // RxDouble opacityTitleAppBar = 0.0.obs;
+  RxDouble opacityTitleAppBar = 0.0.obs;
 
   double _multiple;
   MultiTrackTween _animation;
@@ -57,6 +57,20 @@ class PokeDetailController extends GetxController {
     return color;
   }
 
+  String getPokePhase() {
+    PokeApi _poke = allPoke[current.value];
+    String _pokePhase;
+
+    if (_poke.prevEvolution == null) {
+      _pokePhase = 'Pokémon Básico';
+    } else if (_poke.nextEvolution == null) {
+      _pokePhase = 'Pokémon Estágio 2';
+    } else {
+      _pokePhase = 'Pokémon Estágio 1';
+    }
+    return _pokePhase;
+  }
+
   String getImage(int index) {
     String img =
         '${ConstsApp.IMG_URL}${ConstsApp.parseId(allPoke[index].id)}.png';
@@ -84,6 +98,6 @@ class PokeDetailController extends GetxController {
     progress.value = state.progress;
     _multiple = 1 - interval(0.2, 0.5, progress.value);
     opacity.value = _multiple;
-    // opacityTitleAppBar.value = interval(0.6, 0.87, progress.value);
+    opacityTitleAppBar.value = interval(0.6, 0.87, progress.value);
   }
 }

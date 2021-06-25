@@ -47,7 +47,9 @@ class PageViewPoke extends StatelessWidget {
               padding:
                   EdgeInsets.all(index == controller.current.value ? 0 : 60),
               child: Hero(
-                tag: ConstsApp.parseId(controller.allPoke[index].id),
+                tag: index == controller.current.value
+                    ? ConstsApp.parseId(controller.allPoke[index].id)
+                    : 'none' + index.toString(),
                 child: CachedNetworkImage(
                   color: index == controller.current.value
                       ? null

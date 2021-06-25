@@ -5,14 +5,12 @@ import '../../../global/consts/consts_app.dart';
 import '../controllers/home_controller.dart';
 import 'widgets/appBar_home.dart';
 import 'widgets/grid_poke_home.dart';
-import 'widgets/shimmer_grid_home.dart';
 
 class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     double statusBarHeight = Get.mediaQuery.padding.top;
     return Scaffold(
-      backgroundColor: Colors.white,
       body: Stack(
         clipBehavior: Clip.none,
         children: <Widget>[
@@ -25,7 +23,7 @@ class HomePage extends GetView<HomeController> {
                 height: 240,
                 width: 240,
               ),
-              opacity: 0.1,
+              opacity: 0.03,
             ),
           ),
           Container(
@@ -39,33 +37,58 @@ class HomePage extends GetView<HomeController> {
                 ),
                 Expanded(
                   child: Container(
-                    child: controller.obx(
-                      (state) {
-                        return GridPokeHome(
-                          state: state,
-                        );
-                      },
-                      onLoading: ShimmerGridHome(),
-                      onError: (error) {
-                        return SizedBox(
-                          width: double.infinity,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(error),
-                              TextButton(
-                                onPressed: () => controller.getAllPoke(),
+                    child: controller.obx((state) {
+                      return GridPokeHome(
+                        state: state,
+                      );
+                    }, onError: (error) {
+                      return SizedBox(
+                        width: double.infinity,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              'assets/images/egg.png',
+                              height: 100,
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Text(
+                              error,
+                              style: TextStyle(
+                                  fontFamily: 'Google',
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                              maxLines: 2,
+                            ),
+                            SizedBox(height: 50,),
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)
+                        )),
+                        backgroundColor: MaterialStateProperty.all(context.theme.primaryColor),
+                      ),
+                              onPressed: () => controller.getAllPoke(),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 30),
                                 child: Text(
-                                  'Bora tentar mais uma vez',
+                                  'Bora',
                                   style: TextStyle(
-                                      color: Get.context.theme.primaryColor),
+                                      color: Colors.white,
+                                      fontFamily: 'Google',
+                                      fontSize: 18),
                                 ),
-                              )
-                            ],
-                          ),
-                        );
-                      },
-                    ),
+                              ),
+                            )
+                          ],
+                        ),
+                      );
+                    },
+                        onLoading: Center(
+                            child: Image.asset('assets/gifs/gif_poke.gif',
+                                height: 150))),
                   ),
                 ),
               ],
