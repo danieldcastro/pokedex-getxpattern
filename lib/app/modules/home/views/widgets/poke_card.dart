@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../global/consts/consts_app.dart';
 
@@ -43,7 +43,7 @@ class PokeCard extends StatelessWidget {
                   opacity: 0.3,
                   child: Image.asset(
                     ConstsApp.BLACK_POKE,
-                    color: Colors.white,
+                    color: Get.theme.backgroundColor,
                     height: 95,
                     width: 95,
                   ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:get/get.dart';
 import 'package:simple_animations/simple_animations.dart';
 
 import '../../../../global/consts/consts_app.dart';
@@ -17,7 +18,11 @@ class PageViewPoke extends StatelessWidget {
       controller: controller.pageController,
       physics: BouncingScrollPhysics(),
       itemCount: controller.allPoke.length,
-      onPageChanged: (index) => controller.changePage(index),
+      onPageChanged: (index) {
+        controller.changePage(index);
+        controller.getPokeSpecie();
+        controller.tabController.animateTo(0);
+      },
       itemBuilder: (context, index) {
         return Stack(
           alignment: Alignment.center,
@@ -34,7 +39,7 @@ class PageViewPoke extends StatelessWidget {
                   opacity: index == controller.current.value ? 0.3 : 0,
                   child: Image.asset(
                     ConstsApp.BLACK_POKE,
-                    color: Colors.white,
+                    color: Get.theme.backgroundColor,
                     height: 270,
                     width: 270,
                   ),

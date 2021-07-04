@@ -1,13 +1,12 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:get/get.dart';
-
-import 'widgets/page_view_poke.dart';
 
 import '../../../global/consts/consts_app.dart';
 import '../controllers/poke_detail_controller.dart';
 import 'widgets/information_sheet.dart';
+import 'widgets/page_view_poke.dart';
 
 class PokeDetailView extends GetView<PokeDetailController> {
   @override
@@ -94,24 +93,22 @@ class PokeDetailView extends GetView<PokeDetailController> {
                             setTypes(controller
                                 .currentPoke(controller.current.value)
                                 .type),
-                            Text(
-                              controller.getPokePhase(),
-                              style: TextStyle(
-                                  fontFamily: 'Google',
-                                  fontSize: 18 -
-                                      controller.progress.value *
-                                          (Get.height * 0.005),
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.white),
-                            ),
+                            // Text(
+                            //   controller.getPokePhase(),
+                            //   style: TextStyle(
+                            //       fontFamily: 'Google',
+                            //       fontSize: 18 -
+                            //           controller.progress.value *
+                            //               (Get.height * 0.005),
+                            //       fontWeight: FontWeight.normal,
+                            //       color: Colors.white),
+                            // ),
                           ],
                         ),
                       ),
                     ),
                   ),
-                  InformationSheet(
-                    controller: controller,
-                  ),
+                  InformationSheet(controller: controller),
                   Opacity(
                     opacity: controller.opacity.value,
                     child: Padding(

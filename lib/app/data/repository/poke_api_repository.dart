@@ -10,4 +10,12 @@ class PokeApiRepository {
   getAll() async {
     return pokeApiProvider.getAll();
   }
+
+  getPokeInfo(String poke) async {
+    return pokeApiProvider.getPokeInfo(poke);
+  }
+
+  getPokeSpecie(String numPokemon) async {
+    return pokeApiProvider.getPokeSpecie(numPokemon);
+  }
 }

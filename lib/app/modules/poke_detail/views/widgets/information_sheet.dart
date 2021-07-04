@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:pokedex/app/modules/about_poke/views/about_poke_view.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 
+import '../../../../global/widgets/global_error.dart';
+import '../../../../global/widgets/global_loading_gif.dart';
+
 import '../../controllers/poke_detail_controller.dart';
+import 'about_poke.dart';
 
 class InformationSheet extends StatelessWidget {
   final PokeDetailController controller;
@@ -28,10 +31,29 @@ class InformationSheet extends StatelessWidget {
       builder: (context, state) {
         return Container(
           height: Get.height - Get.height * 0.12,
-         child: AboutPokeView(
-           allPoke: controller.allPoke,
-           current: controller.current.value,
-         ),
+          child: controller.obx(
+            (state) {
+              return AboutPoke(
+                  controller: controller,
+                  allPoke: controller.allPoke,
+                  current: controller.current.value,
+                  state: state);
+            },
+            onLoading: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(height: 200),
+                GlobalLoadingGif(),
+              ],
+            ),
+            onError: (error) => Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(height: 100),
+                GlobalError(reload: controller.getPokeSpecie(), error: error),
+              ],
+            ),
+          ),
         );
       },
     );
