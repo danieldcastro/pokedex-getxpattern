@@ -14,9 +14,9 @@
 
 ## Descrição do projeto :pencil:
 
-App desenvolvido para listagem e detalhamento dos principais Pokémon.
+App desenvolvido para listagem e detalhamento dos Pokémon de primeira geração.
 
-Com o consumo de uma **API REST**, através do **GET CONNECT** e **STATE MIXIN**, é possível exibir uma lista de Pokémon e seus detalhes.
+Com o consumo de duas **APIS REST**, através do **GET CONNECT** e **STATE MIXIN**, é possível exibir uma lista de Pokémon e seus detalhes.
 
 O app foi implementado utilizando o pacote **GETx** e a arquitetura **GETX PATTERN**.
 
@@ -30,11 +30,17 @@ O app foi implementado utilizando o pacote **GETx** e a arquitetura **GETX PATTE
 
 ### Ferramentas
 - [API dos Pokémon (Informações básicas)](https://danieldcastro.github.io/Data/pokedex_ptBR.json)
+- [PokeApiV2 (Informações detalhadas)](https://pokeapi.co/)
 - [QuickType](https://quicktype.io/)
 
 ### Plugins 
-- [get: ^4.1.4](https://pub.dev/packages/get)
+- [auto_size_text: ^2.1.0](https://pub.dev/packages/auto_size_text)
 - [cached_network_image: ^3.0.0](https://pub.dev/packages/cached_network_image)
+- [flutter_staggered_animations: ^1.0.0](https://pub.dev/packages/flutter_staggered_animations)
+- [get: ^4.1.4](https://pub.dev/packages/get)
+- [md2_tab_indicator: ^1.0.2](https://pub.dev/packages/md2_tab_indicator)
+- [simple_animations: ^1.3.6](https://pub.dev/packages/simple_animations)
+- [sliding_sheet: ^0.5.0](https://pub.dev/packages/sliding_sheet)
 
 ----
 #### Se você gostou deste repositório, por favor apoie dando uma :star: 
