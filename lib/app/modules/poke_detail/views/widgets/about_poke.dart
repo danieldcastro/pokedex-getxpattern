@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:md2_tab_indicator/md2_tab_indicator.dart';
+import 'package:pokedex/app/modules/poke_detail/views/widgets/evolution_tab.dart';
 
 import '../../../../data/model/poke_api.dart';
 import '../../../../data/model/specie.dart';
@@ -71,17 +72,26 @@ class AboutPoke extends StatelessWidget {
         },
         controller: controller.aboutPageController,
         children: [
-          AboutTab(
-            controller: controller,
-            state: state,
-            allPoke: allPoke,
-            current: current,
+          SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            child: AboutTab(
+              controller: controller,
+              state: state,
+              allPoke: allPoke,
+              current: current,
+            ),
           ),
-          Container(
-            color: Colors.blue,
+          SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
           ),
-          Container(
-            color: Colors.purple,
+          SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+                      child: EvolutionTab(
+              allPoke: allPoke,
+              controller: controller,
+              current: current,
+              state: state,
+            ),
           )
         ],
       ),

@@ -46,26 +46,28 @@ class PageViewPoke extends StatelessWidget {
                 ),
               ),
             ),
-            AnimatedPadding(
-              duration: Duration(milliseconds: 300),
-              curve: Curves.easeInOut,
-              padding:
-                  EdgeInsets.all(index == controller.current.value ? 0 : 60),
-              child: Hero(
-                tag: index == controller.current.value
-                    ? ConstsApp.parseId(controller.allPoke[index].id)
-                    : 'none' + index.toString(),
-                child: CachedNetworkImage(
-                  color: index == controller.current.value
-                      ? null
-                      : Colors.black.withOpacity(0.3),
-                  height: 180,
-                  width: 180,
-                  errorWidget: (context, url, error) =>
-                      Container(color: Colors.transparent),
-                  imageUrl: controller.getImage(index),
-                  placeholder: (context, url) =>
-                      Container(color: Colors.transparent),
+            IgnorePointer(
+              child: AnimatedPadding(
+                duration: Duration(milliseconds: 300),
+                curve: Curves.easeInOut,
+                padding:
+                    EdgeInsets.all(index == controller.current.value ? 0 : 60),
+                child: Hero(
+                  tag: index == controller.current.value
+                      ? ConstsApp.parseId(controller.allPoke[index].id)
+                      : 'none' + index.toString(),
+                  child: CachedNetworkImage(
+                    color: index == controller.current.value
+                        ? null
+                        : Colors.black.withOpacity(0.3),
+                    height: 180,
+                    width: 180,
+                    errorWidget: (context, url, error) =>
+                        Container(color: Colors.transparent),
+                    imageUrl: controller.getImage(index),
+                    placeholder: (context, url) =>
+                        Container(color: Colors.transparent),
+                  ),
                 ),
               ),
             ),

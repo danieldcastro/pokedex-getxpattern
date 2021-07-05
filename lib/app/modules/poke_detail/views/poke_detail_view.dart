@@ -26,14 +26,14 @@ class PokeDetailView extends GetView<PokeDetailController> {
                   icon: Icon(Icons.arrow_back_rounded),
                   onPressed: () => Get.back(),
                 ),
-                actions: [
-                  IconButton(
-                    icon: Icon(
-                      Icons.favorite_border_rounded,
-                    ),
-                    onPressed: () {},
-                  )
-                ],
+                // actions: [
+                //   IconButton(
+                //     icon: Icon(
+                //       Icons.favorite_border_rounded,
+                //     ),
+                //     onPressed: ()=>controller.sheetController.expand(),
+                //   )
+                // ],
               ),
               body: Stack(
                 children: [

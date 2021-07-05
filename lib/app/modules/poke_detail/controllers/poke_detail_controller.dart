@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:simple_animations/simple_animations/multi_track_tween.dart';
+import 'package:sliding_sheet/sliding_sheet.dart';
 
 import '../../../data/model/poke_api.dart';
 import '../../../data/model/specie.dart';
@@ -127,20 +129,6 @@ class PokeDetailController extends GetxController
     }
   }
 
-  // String getPokeDescription(state) {
-  //   String description = '';
-  //   Specie _specie = state;
-  //   Future.delayed(Duration(milliseconds: 300));
-  //   description = _specie.flavorTextEntries
-  //       .where((description) =>
-  //           description.language.name == 'en' &&
-  //           description.flavorText.contains(allPoke[current.value].name))
-  //       .first
-  //       .flavorText;
-
-  //   return description;
-  // }
-
   String getPokeDescription(state) {
     String _description = state.flavorTextEntries[6].flavorText;
     _description = _description
@@ -158,5 +146,20 @@ class PokeDetailController extends GetxController
       );
     }
     return eggGroup.toString().replaceAll('[', '').replaceAll(']', '');
+  }
+
+  Widget imagePoke(index) {
+    return SizedBox(
+      height: 80,
+      child: CachedNetworkImage(
+        placeholder: (context, url) => new Container(
+          color: Colors.transparent,
+        ),
+        errorWidget: (context, url, error) => Container(
+          color: Colors.transparent,
+        ),
+        imageUrl: '${ConstsApp.IMG_URL}$index.png',
+      ),
+    );
   }
 }

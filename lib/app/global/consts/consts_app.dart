@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class ConstsApp {
   static const WHITE_POKE = 'assets/images/pokeball.png';
   static const BLACK_POKE = 'assets/images/pokeball_dark.png';
-
   static const IMG_URL =
       'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/';
 
