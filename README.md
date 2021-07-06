@@ -10,13 +10,13 @@
   <img width="135" src="https://img.shields.io/badge/Buy_Me_A_Toddynho-d83a7c?style=for-the-badge&logo=buy-me-a-coffee&logoColor=white">
 </a>
 
-> Status do Projeto: Em andamento :hourglass_flowing_sand:
+> Status do Projeto: Concluído em 06/07/2021 v1.0.0+1 :heavy_check_mark:
 
 ## Descrição do projeto :pencil:
 
 App desenvolvido para listagem e detalhamento dos Pokémon de primeira geração.
 
-Com o consumo de duas **APIS REST**, através do **GET CONNECT** e **STATE MIXIN**, é possível exibir uma lista de Pokémon e seus detalhes.
+Com o consumo de duas **APIS REST**, através do **GET CONNECT** e **STATE MIXIN**, é possível exibir uma lista de Pokémon e seus detalhes, atributos e evoluções.
 
 O app foi implementado utilizando o pacote **GETx** e a arquitetura **GETX PATTERN**.
 
@@ -42,6 +42,29 @@ O app foi implementado utilizando o pacote **GETx** e a arquitetura **GETX PATTE
 - [simple_animations: ^1.3.6](https://pub.dev/packages/simple_animations)
 - [sliding_sheet: ^0.5.0](https://pub.dev/packages/sliding_sheet)
 
+## O que o App é capaz de fazer :crystal_ball:
+
+:trophy: Buscar e exibir os Pokémon de primeira geração.
+
+:trophy: Listar detalhes, atributos e evoluções de cada Pokémon.
+
+## 💻 Bora dar uma clonada?
+Obs.: Certifique-se de ter o Flutter 2.0 ou superior instalado, caso não esteja, execute:
+
+```
+flutter upgrade
+```
+
+Com Flutter atualizado execute:
+```
+git clone https://github.com/danieldcastro/pokedex-getxpattern
+cd pokedex-getxpattern
+flutter pub get
+flutter run
+```
+
 ----
 #### Se você gostou deste repositório, por favor apoie dando uma :star: 
 #### Feito com ♥ e <img height="26" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/flutter/flutter.png">lutter!
+----
+###### Implementação do Getx orientada por [Kauê Murakami](https://github.com/kauemurakami) 💜
