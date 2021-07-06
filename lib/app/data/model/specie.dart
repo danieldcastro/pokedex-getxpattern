@@ -1,9 +1,5 @@
 import 'dart:convert';
 
-// To parse this JSON data, do
-//
-//     final specie = specieFromJson(jsonString);
-
 Specie specieFromJson(str) => Specie.fromJson((str));
 
 String specieToJson(Specie data) => json.encode(data.toJson());

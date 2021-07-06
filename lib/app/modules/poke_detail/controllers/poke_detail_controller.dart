@@ -1,9 +1,9 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:get/get.dart';
 import 'package:simple_animations/simple_animations/multi_track_tween.dart';
-import 'package:sliding_sheet/sliding_sheet.dart';
 
 import '../../../data/model/poke_api.dart';
 import '../../../data/model/specie.dart';
@@ -40,8 +40,8 @@ class PokeDetailController extends GetxController
     aboutPageController = PageController(initialPage: 0);
     allPoke = arg[0];
     rotationPoke();
-    // getPokeInfo();
     getPokeSpecie();
+
     _multiple = 1;
   }
 
@@ -78,11 +78,8 @@ class PokeDetailController extends GetxController
 
     if (_poke.prevEvolution == null) {
       _pokePhase = 'Pokémon Básico';
-    } else if (_poke.nextEvolution == null) {
-      _pokePhase = 'Pokémon Estágio 2';
-    } else {
-      _pokePhase = 'Pokémon Estágio 1';
     }
+
     return _pokePhase;
   }
 
@@ -121,7 +118,6 @@ class PokeDetailController extends GetxController
     try {
       final data = await _pokeApiRepository
           .getPokeSpecie(allPoke[current.value].id.toString());
-      //await _pokeApiRepository.getPokeInfo(allPoke[current.value].name);
       change(data, status: RxStatus.success());
     } catch (e) {
       print(e);

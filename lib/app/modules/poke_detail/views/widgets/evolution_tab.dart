@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_connect/connect.dart';
-import 'package:pokedex/app/data/model/poke_api.dart';
-import 'package:pokedex/app/data/model/specie.dart';
-import 'package:pokedex/app/global/consts/consts_app.dart';
-import 'package:pokedex/app/modules/poke_detail/controllers/poke_detail_controller.dart';
-import 'package:pokedex/app/modules/poke_detail/views/widgets/evolution_card.dart';
+
+import '../../../../data/model/poke_api.dart';
+import '../../../../data/model/specie.dart';
+import '../../../../global/consts/consts_app.dart';
+import '../../controllers/poke_detail_controller.dart';
+import 'evolution_card.dart';
 
 class EvolutionTab extends StatelessWidget {
   final PokeDetailController controller;
@@ -27,16 +27,6 @@ class EvolutionTab extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'Cadeia de Evolução',
-            style: TextStyle(
-                fontSize: 19,
-                fontFamily: 'Google',
-                fontWeight: FontWeight.bold),
-          ),
-          SizedBox(
-            height: 20,
-          ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -67,8 +57,8 @@ class EvolutionTab extends StatelessWidget {
     if (pokeApi.prevEvolution != null) {
       pokeApi.prevEvolution.forEach((f) {
         _list.add(EvolutionCard(
-          index: int.parse(f.num) - 1,
-          controller: controller,
+            index: int.parse(f.num) - 1,
+            controller: controller,
             id: f.num,
             name: f.name,
             color: ConstsApp.getColorType(type: allPoke[current].type[0]),
@@ -77,8 +67,8 @@ class EvolutionTab extends StatelessWidget {
       });
     }
     _list.add(EvolutionCard(
-       index: current,
-      controller: controller,
+        index: current,
+        controller: controller,
         id: controller.currentPoke(current).num,
         name: controller.currentPoke(current).name,
         color: ConstsApp.getColorType(type: allPoke[current].type[0]),
@@ -89,8 +79,8 @@ class EvolutionTab extends StatelessWidget {
       pokeApi.nextEvolution.forEach(
         (f) {
           _list.add(EvolutionCard(
-                      index: int.parse(f.num) - 1,
-            controller: controller,
+              index: int.parse(f.num) - 1,
+              controller: controller,
               id: f.num,
               name: f.name,
               color: ConstsApp.getColorType(type: allPoke[current].type[0]),

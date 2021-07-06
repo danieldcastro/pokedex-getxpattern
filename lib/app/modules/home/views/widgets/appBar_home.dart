@@ -3,10 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../../global/widgets/global_padding.dart';
 
 class AppBarHome extends StatelessWidget {
-  final Function menuTap;
-
-  const AppBarHome({Key key, @required this.menuTap}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,11 +16,12 @@ class AppBarHome extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: 13, right: 5),
                   child: IconButton(
+                    onPressed: () {},
                     icon: Icon(
                       Icons.menu_rounded,
                       size: 28,
+                      color: Colors.transparent,
                     ),
-                    onPressed: menuTap,
                   ),
                 )
               ],

@@ -26,14 +26,6 @@ class PokeDetailView extends GetView<PokeDetailController> {
                   icon: Icon(Icons.arrow_back_rounded),
                   onPressed: () => Get.back(),
                 ),
-                // actions: [
-                //   IconButton(
-                //     icon: Icon(
-                //       Icons.favorite_border_rounded,
-                //     ),
-                //     onPressed: ()=>controller.sheetController.expand(),
-                //   )
-                // ],
               ),
               body: Stack(
                 children: [
@@ -93,16 +85,18 @@ class PokeDetailView extends GetView<PokeDetailController> {
                             setTypes(controller
                                 .currentPoke(controller.current.value)
                                 .type),
-                            // Text(
-                            //   controller.getPokePhase(),
-                            //   style: TextStyle(
-                            //       fontFamily: 'Google',
-                            //       fontSize: 18 -
-                            //           controller.progress.value *
-                            //               (Get.height * 0.005),
-                            //       fontWeight: FontWeight.normal,
-                            //       color: Colors.white),
-                            // ),
+                            Text(
+                              controller.getPokePhase() != null
+                                  ? controller.getPokePhase()
+                                  : '',
+                              style: TextStyle(
+                                  fontFamily: 'Google',
+                                  fontSize: 18 -
+                                      controller.progress.value *
+                                          (Get.height * 0.005),
+                                  fontWeight: FontWeight.normal,
+                                  color: Colors.white),
+                            ),
                           ],
                         ),
                       ),

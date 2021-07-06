@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 
 import '../../../global/consts/consts_app.dart';
@@ -34,9 +35,7 @@ class HomePage extends GetView<HomeController> {
                 Container(
                   height: statusBarHeight,
                 ),
-                AppBarHome(
-                  menuTap: () {},
-                ),
+                AppBarHome(),
                 Expanded(
                   child: Container(
                     child: controller.obx((state) {

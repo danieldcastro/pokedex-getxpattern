@@ -42,7 +42,6 @@ class GlobalError extends StatelessWidget {
                   MaterialStateProperty.all(Get.theme.primaryColor),
             ),
             onPressed: () => reload,
-            // controller.getAllPoke(),
             child: Padding(
               padding:
                   const EdgeInsets.symmetric(vertical: 5.0, horizontal: 30),

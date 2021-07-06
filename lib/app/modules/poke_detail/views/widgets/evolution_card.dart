@@ -1,8 +1,10 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:get/get.dart';
-import 'package:pokedex/app/global/consts/consts_app.dart';
-import 'package:pokedex/app/modules/poke_detail/controllers/poke_detail_controller.dart';
+
+import '../../../../global/consts/consts_app.dart';
+import '../../controllers/poke_detail_controller.dart';
 
 class EvolutionCard extends StatelessWidget {
   final String name;

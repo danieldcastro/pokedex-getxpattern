@@ -5,7 +5,6 @@ import 'package:sliding_sheet/sliding_sheet.dart';
 
 import '../../../../global/widgets/global_error.dart';
 import '../../../../global/widgets/global_loading_gif.dart';
-
 import '../../controllers/poke_detail_controller.dart';
 import 'about_poke.dart';
 
@@ -18,15 +17,17 @@ class InformationSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SlidingSheet(
-      scrollSpec: ScrollSpec(
-        physics: BouncingScrollPhysics()),
+      scrollSpec: ScrollSpec(physics: BouncingScrollPhysics()),
       listener: (state) => controller.listenerSlidingSheet(state),
       elevation: 0,
       color: Get.theme.backgroundColor,
       cornerRadius: 35,
       snapSpec: SnapSpec(
         snap: true,
-        snappings: [0.65, 0.89,],
+        snappings: [
+          0.65,
+          0.89,
+        ],
         positioning: SnapPositioning.relativeToAvailableSpace,
       ),
       builder: (context, state) {

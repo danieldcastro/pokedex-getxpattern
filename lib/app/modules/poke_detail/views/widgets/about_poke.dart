@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+
 import 'package:md2_tab_indicator/md2_tab_indicator.dart';
-import 'package:pokedex/app/modules/poke_detail/views/widgets/evolution_tab.dart';
 
 import '../../../../data/model/poke_api.dart';
 import '../../../../data/model/specie.dart';
 import '../../../../global/consts/consts_app.dart';
 import '../../controllers/poke_detail_controller.dart';
 import 'about_tab.dart';
+import 'evolution_tab.dart';
+import 'status_tab.dart';
 
 class AboutPoke extends StatelessWidget {
   final PokeDetailController controller;
@@ -74,23 +76,44 @@ class AboutPoke extends StatelessWidget {
         children: [
           SingleChildScrollView(
             physics: BouncingScrollPhysics(),
-            child: AboutTab(
-              controller: controller,
-              state: state,
-              allPoke: allPoke,
-              current: current,
+            child: Column(
+              children: [
+                AboutTab(
+                  controller: controller,
+                  state: state,
+                  allPoke: allPoke,
+                  current: current,
+                ),
+                SizedBox(
+                  height: 80,
+                )
+              ],
             ),
           ),
           SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
-          ),
+              physics: BouncingScrollPhysics(),
+              child: Column(
+                children: [
+                  StatusTab(),
+                  SizedBox(
+                    height: 80,
+                  )
+                ],
+              )),
           SingleChildScrollView(
             physics: BouncingScrollPhysics(),
-                      child: EvolutionTab(
-              allPoke: allPoke,
-              controller: controller,
-              current: current,
-              state: state,
+            child: Column(
+              children: [
+                EvolutionTab(
+                  allPoke: allPoke,
+                  controller: controller,
+                  current: current,
+                  state: state,
+                ),
+                SizedBox(
+                  height: 80,
+                )
+              ],
             ),
           )
         ],
