@@ -12,6 +12,8 @@
 
 > Status do Projeto: Concluído em 06/07/2021 v1.0.0+1 :heavy_check_mark:
 
+![Apple iPhone 11 Pro Max Presentation](https://user-images.githubusercontent.com/51754570/124677500-04fc3e80-de97-11eb-92d4-3a83a44a060f.png)
+
 ## Descrição do projeto :pencil:
 
 App desenvolvido para listagem e detalhamento dos Pokémon de primeira geração.
