@@ -22,7 +22,7 @@ Com o consumo de duas **APIS REST**, através do **GET CONNECT** e **STATE MIXIN
 
 O app foi implementado utilizando o pacote **GETx** e a arquitetura **GETX PATTERN**.
 
-## :paperclip: Tecnologias utilizadas 
+## Tecnologias utilizadas :paperclip: 
 
 <a href="https://flutter.dev/" target="_blank"><img height="26" src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white"></a>
 <a href="https://dart.dev/" target="_blank"><img height="26" src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white"></a>
@@ -44,7 +44,7 @@ O app foi implementado utilizando o pacote **GETx** e a arquitetura **GETX PATTE
 - [simple_animations: ^1.3.6](https://pub.dev/packages/simple_animations)
 - [sliding_sheet: ^0.5.0](https://pub.dev/packages/sliding_sheet)
 
-## O que o App é capaz de fazer :crystal_ball:
+## O que o app é capaz de fazer :crystal_ball:
 
 :trophy: Buscar e exibir os Pokémon de primeira geração.
 
